@@ -57,15 +57,31 @@ public class ArraysAndStringsTest {
 
     @Test
     public void removeDuplicateCharactersReturnsEmptyStringWhenGivenANullOrEmptyString() {
-        assertThat(ArraysAndStrings.removeDuplicateCharacters(null), is(""));
-        assertThat(ArraysAndStrings.removeDuplicateCharacters(""), is(""));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace(null), is(nullValue()));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("".toCharArray()), is("".toCharArray()));
     }
 
     @Test
     public void removeDuplicateCharacters() {
-        assertThat(ArraysAndStrings.removeDuplicateCharacters("o"), is("o"));
-        assertThat(ArraysAndStrings.removeDuplicateCharacters("unique"), is("unique"));
-        assertThat(ArraysAndStrings.removeDuplicateCharacters("helloo"), is("helo"));
-        assertThat(ArraysAndStrings.removeDuplicateCharacters("aaaa"), is("a"));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("o".toCharArray()), is("o".toCharArray()));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("uniqe".toCharArray()), is("uniqe".toCharArray()));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("helloo".toCharArray()), is("helo".toCharArray()));
+        assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("aaaa".toCharArray()), is("a".toCharArray()));
+    }
+
+    @Test
+    public void areAnagramsReturnsFalseWhenOnlyOneStringIsNull() {
+        assertThat(ArraysAndStrings.areAnagrams("str".toCharArray(), null), is(false));
+        assertThat(ArraysAndStrings.areAnagrams(null, "str".toCharArray()), is(false));
+    }
+
+    @Test
+    public void areAnagrams() {
+        assertThat(ArraysAndStrings.areAnagrams(null, null), is(true));
+        assertThat(ArraysAndStrings.areAnagrams("".toCharArray(), "".toCharArray()), is(true));
+        assertThat(ArraysAndStrings.areAnagrams("blah".toCharArray(), "habl".toCharArray()), is(true));
+        assertThat(ArraysAndStrings.areAnagrams("h".toCharArray(), "h".toCharArray()), is(true));
+        assertThat(ArraysAndStrings.areAnagrams("aa".toCharArray(), "aa".toCharArray()), is(true));
+        assertThat(ArraysAndStrings.areAnagrams("aab".toCharArray(), "abb".toCharArray()), is(false));
     }
 }
