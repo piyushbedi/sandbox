@@ -13,36 +13,37 @@ public class BalancedBinaryTree {
     private BBTNode<Integer> root;
 
     public BalancedBinaryTree() {
-        root = null;
+        this.root = null;
     }
 
     public BalancedBinaryTree(Integer data) {
-        this.root = root;
+        this.root = new BBTNode<Integer>(data, null, null);
     }
 
     public void insert(Integer data) {
-         insert(data, root);
+         this.root = insert(data, this.root);
     }
 
-    private void insert(Integer data, BBTNode root) {
+    private BBTNode insert(Integer data, BBTNode root) {
         if (root == null) {
-            root = new BBTNode<Integer>(data, null, null);
+            return new BBTNode<Integer>(data, null, null);
         } else {
             if ((Integer)root.getData() >= data) {
-                insert(data, root.getLeft());
+                root.setLeft(insert(data, root.getLeft()));
             } else {
-                insert(data, root.getRight());
+                root.setRight(insert(data, root.getRight()));
             }
         }
+        return root;
     }
 
     public String printInOrder() {
         StringBuilder sb = new StringBuilder();
         List<Integer> flattenedTree = inOrder(new ArrayList<Integer>(), root);
         for (Integer element : flattenedTree) {
-            sb.append(element.toString());
+            sb.append(element.toString() + ", ");
         }
-        return sb.toString();
+        return sb.length() > 0 ? sb.substring(0, sb.length()-2) : sb.toString();
     }
     
     private List<Integer> inOrder(List<Integer> soFar, BBTNode node) {
@@ -86,6 +87,14 @@ public class BalancedBinaryTree {
 
         public BBTNode getRight() {
             return right;
+        }
+
+        public void setLeft(BBTNode left) {
+            this.left = left;
+        }
+
+        public void setRight(BBTNode right) {
+            this.right = right;
         }
     }
 }
