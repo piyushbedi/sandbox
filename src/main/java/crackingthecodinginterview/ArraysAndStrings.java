@@ -103,35 +103,18 @@ public class ArraysAndStrings {
         return withoutDuplicates;
     }
 
-    public static boolean areAnagrams(char[] str1, char[] str2) {
-        if (str1 == str2) {
-            return true;
-        }
-
-        if (str1 == null ^ str2 == null) {
-            return false;
-        }
-
-        if (str1.length != str2.length) {
-            return false;
-        }
-
-        Arrays.sort(str1);
-        Arrays.sort(str2);
-
-        for (int i = 0; i < str1.length; i++) {
-            if (str1[i] != str2[i]) {
-                return false;
+    public static void main(String[] args) {
+        int k = 23;
+        System.out.println("k = " + k + " = " + Integer.toBinaryString(k));
+        int index = 0;
+        while (k > 0) {
+            System.out.println("k & 1 = " + (k & 1));
+            if ((k & 1) > 0) {
+                System.out.println("index = " + index);
             }
+            index++;
+            k >>= 1;
+            System.out.println("k = " + k + " = " + Integer.toBinaryString(k));
         }
-
-        return true;
     }
-
-    private static void swap(char[] str, int a, int b) {
-        char tmp = str[b];
-        str[b] = str[a];
-        str[a] = tmp;
-    }
-
 }
