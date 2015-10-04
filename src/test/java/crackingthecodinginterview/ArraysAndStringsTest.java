@@ -69,19 +69,19 @@ public class ArraysAndStringsTest {
         assertThat(ArraysAndStrings.removeDuplicateCharactersInPlace("aaaa".toCharArray()), is("a".toCharArray()));
     }
 
-    @Test
-    public void areAnagramsReturnsFalseWhenOnlyOneStringIsNull() {
-        assertThat(ArraysAndStrings.areAnagrams("str".toCharArray(), null), is(false));
-        assertThat(ArraysAndStrings.areAnagrams(null, "str".toCharArray()), is(false));
-    }
-
-    @Test
-    public void areAnagrams() {
-        assertThat(ArraysAndStrings.areAnagrams(null, null), is(true));
-        assertThat(ArraysAndStrings.areAnagrams("".toCharArray(), "".toCharArray()), is(true));
-        assertThat(ArraysAndStrings.areAnagrams("blah".toCharArray(), "habl".toCharArray()), is(true));
-        assertThat(ArraysAndStrings.areAnagrams("h".toCharArray(), "h".toCharArray()), is(true));
-        assertThat(ArraysAndStrings.areAnagrams("aa".toCharArray(), "aa".toCharArray()), is(true));
-        assertThat(ArraysAndStrings.areAnagrams("aab".toCharArray(), "abb".toCharArray()), is(false));
-    }
+//    @Test
+//    public void areAnagramsReturnsFalseWhenOnlyOneStringIsNull() {
+//        assertThat(ArraysAndStrings.areAnagrams("str".toCharArray(), null), is(false));
+//        assertThat(ArraysAndStrings.areAnagrams(null, "str".toCharArray()), is(false));
+//    }
+//
+//    @Test
+//    public void areAnagrams() {
+//        assertThat(ArraysAndStrings.areAnagrams(null, null), is(true));
+//        assertThat(ArraysAndStrings.areAnagrams("".toCharArray(), "".toCharArray()), is(true));
+//        assertThat(ArraysAndStrings.areAnagrams("blah".toCharArray(), "habl".toCharArray()), is(true));
+//        assertThat(ArraysAndStrings.areAnagrams("h".toCharArray(), "h".toCharArray()), is(true));
+//        assertThat(ArraysAndStrings.areAnagrams("aa".toCharArray(), "aa".toCharArray()), is(true));
+//        assertThat(ArraysAndStrings.areAnagrams("aab".toCharArray(), "abb".toCharArray()), is(false));
+//    }
 }
