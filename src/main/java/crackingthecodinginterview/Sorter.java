@@ -28,6 +28,48 @@ public class Sorter {
         }
     }
 
+    public static void quickSort(int[] data) {
+        if (data == null || data.length <= 1) {
+            return;
+        }
+
+        quickSortHelper(0, data.length - 1, data);
+    }
+
+    private static void quickSortHelper(int low, int high, int[] data) {
+        if (low >= high) {
+            return;
+        }
+
+        int pivot = data[low + (high-low) / 2];
+
+        int j = low;
+        int k = high;
+
+        while (j <= k) {
+            while (data[j] < pivot) {
+                j++;
+            }
+            if (data[k] > pivot) {
+                k--;
+            }
+
+            if (j <= k) {
+                swap(j, k, data);
+                j++;
+                k--;
+            }
+        }
+
+        if (low < k) {
+            quickSortHelper(low, k, data);
+        }
+
+        if (high > j) {
+            quickSortHelper(j, high, data);
+        }
+    }
+
     private static int[] mergeSortHelper(int[] data) {
         if (data.length <= 1) {
             return data;
@@ -37,6 +79,7 @@ public class Sorter {
 
         return merge(mergeSortHelper(subArray(0, midPoint, data)), mergeSortHelper(subArray(midPoint, data.length, data)));
     }
+
 
     private static int[] merge(int[] data1, int[] data2) {
         int[] merged = new int[data1.length + data2.length];
@@ -65,7 +108,6 @@ public class Sorter {
         }
         return merged;
     }
-
 
     private static int indexOfMinimumFrom(int i, int[] data) {
         int minIndex = i;

@@ -25,7 +25,8 @@ public class SorterTest {
                 {"empty array",new int[] {}, new int[] {}},
                 {"singleton array", new int[] {8}, new int[] {8}},
                 {"mixed array", new int[] {2, 3, 1}, new int[] {1, 2, 3}},
-                {"sorted array", new int[] {1, 2, 3}, new int[] {1, 2, 3}}
+                {"sorted array", new int[] {1, 2, 3}, new int[] {1, 2, 3}},
+                {"mixed array 2", new int[] {2, 3, 1, 25, -4, 16, 2}, new int[] {-4, 1, 2, 2, 3, 16, 25}}
         });
     }
 
@@ -48,6 +49,12 @@ public class SorterTest {
     @Test
     public void mergeSort() throws Exception {
         Sorter.mergeSort(input);
+        Assert.assertThat(input, is(expected));
+    }
+
+    @Test
+    public void quickSort() throws Exception {
+        Sorter.quickSort(input);
         Assert.assertThat(input, is(expected));
     }
 }
