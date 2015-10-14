@@ -57,6 +57,43 @@ public class LinkedList {
         head = curr;
     }
 
+    public void remove(int index) {
+        if (head == null) {
+            return;
+        }
+
+        Node node = head;
+        Node prev = head;
+        while(index > 0) {
+            if (node == null) {
+                throw new IllegalArgumentException("Index greater than size of list");
+            }
+            prev = node;
+            node = node.next;
+            index--;
+        }
+        prev.next = node.next;
+    }
+
+    public void subList(int inclusizeStartIndex, int exclusiveEndIndex) {
+        if (head == null) {
+            return;
+        }
+
+        Node node = head;
+        int i = 0;
+        for (; i < inclusizeStartIndex; i++, node = node.next) {}
+        head = node;
+        for (; i < exclusiveEndIndex - 1; i++, node = node.next) {}
+        node.next = null;
+    }
+
+    public int getValueAt(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++, node = node.next) {}
+        return node.data;
+    }
+
     private class Node {
         int data;
         Node next;
@@ -64,11 +101,6 @@ public class LinkedList {
         public Node(int data) {
             this.data = data;
             this.next = null;
-        }
-
-        public Node(int data, Node next) {
-            this.data = data;
-            this.next = next;
         }
     }
 }

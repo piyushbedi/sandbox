@@ -49,4 +49,48 @@ public class LinkedListTest {
         list.reverse();
         assertThat(list.toString(), is("[5]"));
     }
+
+    @Test
+    public void remove() {
+        list.insert(5);
+        list.insert(-1);
+        list.insert(47);
+        list.insert(1234);
+
+        list.remove(2);
+
+        assertThat(list.toString(), is("[5, -1, 1234]"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void removingBeyondSizeThrowsException() {
+        list.insert(5);
+        list.insert(-1);
+        list.insert(47);
+        list.insert(1234);
+
+        list.remove(5);
+    }
+
+    @Test
+    public void subList() {
+        list.insert(5);
+        list.insert(-1);
+        list.insert(47);
+        list.insert(1234);
+
+        list.subList(1, 3);
+
+        assertThat(list.toString(), is("[-1, 47]"));
+    }
+
+    @Test
+    public void getValueAt() {
+        list.insert(5);
+        list.insert(-1);
+        list.insert(47);
+        list.insert(1234);
+
+        assertThat(list.getValueAt(2), is(47));
+    }
 }
